@@ -1,0 +1,9 @@
+stages:
+- name: Build
+  steps:
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile
+      buildContext: .
+      tag: wls-pipeline:1.0
+timeout: 60
+notification: {}
