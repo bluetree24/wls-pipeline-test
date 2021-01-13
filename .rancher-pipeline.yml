@@ -5,5 +5,11 @@ stages:
       dockerfilePath: ./Dockerfile
       buildContext: .
       tag: wls-pipeline:1.0
+- name: Deploy
+  steps:
+  - applyYamlConfig:
+      path: ./model.yaml
+  - applyYamlConfig:
+      path: ./binding.yaml
 timeout: 60
 notification: {}
