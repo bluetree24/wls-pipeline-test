@@ -1,0 +1,20 @@
+# Copyright (c) 2020, Oracle and/or its affiliates.
+# Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
+apiVersion: verrazzano.io/v1beta1
+kind: VerrazzanoModel
+metadata:
+  name: pipeline-test
+  namespace: default
+spec:
+  description: "pipeline-test"
+  helidonApplications:
+    - name: "pipeline-test"
+      image: "wls-pipeline:${CICD_EXECUTION_SEQUENCE}"
+      imagePullSecrets:
+        - name: "p-4xgrw-dockerregistryp4xgrwpipeline"
+      connections:
+        - ingress:
+            - name: "pipeline-ingress"
+              match:
+                - uri:
+                    prefix: "/greet"

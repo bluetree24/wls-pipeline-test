@@ -1,0 +1,17 @@
+apiVersion: verrazzano.io/v1beta1
+kind: VerrazzanoBinding
+metadata:
+  name: pipeline-test-binding
+  namespace: default
+spec:
+  description: "pipeline test binding"
+  modelName: pipeline-test
+  placement:
+    - name: local
+      namespaces:
+        - name: greet
+          components:
+            - name: pipeline-test
+  ingressBindings:
+    - name: "pipeline-ingress"
+      dnsName: "*"
