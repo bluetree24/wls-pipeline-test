@@ -4,7 +4,8 @@ stages:
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
       buildContext: .
-      tag: wls-pipeline:1.0
+      tag: wls-pipeline:${CICD_EXECUTION_SEQUENCE}
+      registry: 127.0.0.1:34218
 - name: Deploy
   steps:
   - applyYamlConfig:
